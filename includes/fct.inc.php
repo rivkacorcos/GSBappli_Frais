@@ -15,31 +15,50 @@
  */
 
 /**
- * Teste si un quelconque visiteur est connecté
+ * Teste si un quelconque utilisateur est connecté
  *
  * @return vrai ou faux
  */
 function estConnecte()
 {
-    return isset($_SESSION['idVisiteur']);//return retourne l'instruction demandée qui isset. isset — Détermine si une variable est définie et est différente de NULL
+    return isset($_SESSION['isUtilisateur']);//return retourne l'instruction demandée qui isset. isset — Détermine si une variable est définie et est différente de NULL
 }
 
 /**
- * Enregistre dans une variable session les infos d'un visiteur
+ * Teste si un quelconque visiteur est connecté
  *
- * @param String $idVisiteur ID du visiteur
- * @param String $nom        Nom du visiteur
- * @param String $prenom     Prénom du visiteur
+ * @return vrai ou faux
+ */
+function estConnecteVisteur()
+{
+   return ( $_SESSION['statut'] == 'visiteur'); 
+}
+
+/**
+ * Teste si un quelconque comptable est connecté
+ *
+ * @return vrai ou faux
+ */
+function estConnecteComptable()
+{
+   return ( $_SESSION['statut'] == 'comptable');
+}
+/**
+ * Enregistre dans une variable session les infos d'un utilisateur
+ *
+ * @param String $idUtilisateur ID de l'utilisateur
+ * @param String $nom        Nom de l'utilisateur
+ * @param String $prenom     Prénom de l'utilisateur
  *
  * @return null
  */
-function connecter($idVisiteur, $nom, $prenom)// déclaration de fonction avec son nom suivi de ses parametres qui sont des varaibles. Les variables sont precédées par des $
+function connecter($idUtilisateur, $nom, $prenom, $statut )// déclaration de fonction avec son nom suivi de ses parametres qui sont des varaibles. Les variables sont precédées par des $
 {
-    $_SESSION['idVisiteur'] = $idVisiteur;//$_session s'utilise losqu'on ouvre une variable
+    $_SESSION['idUtilisateur'] = $idUtilisateur;//$_session s'utilise losqu'on ouvre une variable
     $_SESSION['nom'] = $nom;
     $_SESSION['prenom'] = $prenom;
-}
-
+    $_SESSION['statut'] = $statut;//$_session s'utilise losqu'on ouvre une variable
+ }   
 /**
  * Détruit la session active
  *
